@@ -48,3 +48,14 @@ Data → Train → Model → Deploy → Inference
                 Evaluation + Tracing
                            │
                        Monitoring
+
+--> What problems does Azure ML solve?
+Azure ML provides managed compute where training jobs can run.
+   Local files(laptop) --> Azure ML Compute --> Train Model
+
+Enables automation via ML Pipelines.
+   Data --> Train --> Evaluate --> Deploy --> Track(ML Flow) --> Register
+
+Where to store/version model?
+   Model registry
+

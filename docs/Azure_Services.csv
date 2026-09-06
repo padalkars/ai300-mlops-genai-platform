@@ -1,0 +1,15 @@
+,Requirement,Azure/Microsoft Technology
+0,ML workspace,Azure Machine Learning
+1,Experiment Tracking,ML Flow
+2,Training,Azure ML Jobs
+3,Pipeline Orchestration,Azure ML Pipelines
+4,Model Registry,Azure ML Registry
+5,Real-Time Inference,Managed Online Endpoint
+6,Batch Inference,Batch Endpoint
+7,CI/CD,GitHub Actions
+8,IaC,Bicep
+9,Monitoring,Azure ML Model Monitor / Azure Monitor
+10,GenAI,Microsoft Foundry
+11,RAG,Foundry + Retrieval Components
+12,Evaluation,Foundry Evaluation
+13,Observability,Foundry tracing/Azure Monitor
