@@ -1,0 +1,19 @@
+1. What problem does Azure Machine Learning solve?
+Answer:-
+2. What is an Azure workspace?
+Answer:-
+3. What is an ML pipeline?
+Answer:- An 
+4. What is an ML component?
+Answer:- 
+5. Where does MLflow fit?
+Answer:- It is used for model tracking/monitoring.
+         Between model training activity and the model deployment activity.
+6. Where does model registration fit?
+Answer:- 
+7. What are major stages of your project's ML lifecycle?
+Answer:- 1. Data --> 
+         2. Preprocessing --> Missing Value Handling, Outlier Handling, Scaling, Feature Engineering
+         3. Model Building(Train + Evaluate) --> Statistical Analysis(Uni-variate + Bi-variate) -->     Algorithm Selection --> Parameter Tuning --> Re-training
+         4. CI/CD -->  
+         5. Model Monitoring

@@ -1,0 +1,4 @@
+tenant_id:- A unique identifier for your Azure Active Directory(Entra ID) instance
+Subscription:- The account having the relevant access. Billing related details for the account.
+Resource Group:- A set/collection of resources associated with the Subscription(id). Various projects might require their own set of resources. Isolate and create a group of those resources.
+
