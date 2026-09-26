@@ -35,14 +35,29 @@ X_train, y_train, X_test, y_test = split_instance.data_split(test_size=0.20)
 
 # Cross Validation
 lr = LR(max_iter=500, solver="liblinear")
-y_train_df = pd.DataFrame(y_train)
-train_data = pd.concat([X_train, y_train_df], axis=1)
+# y_train_df = pd.DataFrame(y_train)
+train_data = pd.concat([X_train, y_train], axis=1)
+train_data = train_data.reset_index()
+
 cv_instance = CV(target_var="target_numeric_label", independent_vars=continuous_vars, train_data=train_data, algo_object=lr)
-cv_results = cv_instance.get_fold_results()
-print(cv_results)
+stratified_folds = cv_instance.stratified_folds()
+
+CV_results = pd.DataFrame({"Folds":[]})
+
+for fold_num,data_tup in enumerate(stratified_folds):
+    train_data, test_data = data_tup
+    X_train, y_train = train_data[continuous_vars], train_data["target_numeric_label"]
+    X_test, y_test = test_data[continuous_vars], test_data["target_numeric_label"]
+    
+    # Fold results
+    results = cv_instance.training(X_train, y_train, X_test, y_test, features=continuous_vars)
+    results["Folds"] = fold_num+1
+    CV_results = pd.concat([CV_results, results], axis=0)
+
+print(CV_results)
 
 # Modelling
-modelling_instance = Modeling(X_train, y_train, X_test, y_test, lr)
+modelling_instance = Modeling(X_train, y_train, X_test, y_test, lr, model_name="Logistic_Regression")
 trained_model, train_test_results = modelling_instance.driver(features=continuous_vars)
 
 print(train_test_results)

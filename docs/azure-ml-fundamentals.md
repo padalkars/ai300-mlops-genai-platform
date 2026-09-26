@@ -23,7 +23,7 @@ Knowledge Map - Day 2
                   ↓             ↓             ↓
                Metrics      Artifacts      Models
 
-Azure ML Workspace:-
+Azure ML Workspace:- An eco-system that facilitates the end-to-end ML solution from data till model development till model serving.
 
 Compute Instance:- An entity providing single user(no-sharing), single node, no auto-scaling compute used to execute scripts and notebooks.
 
@@ -33,17 +33,18 @@ Serverless Compute:- A fully managed on-demand compute, Azure ML creates, scales
 
 Azure ML Environments:- An entity that enables execution of ML Job and it's tracking.
 
-Jobs:- A job represents execution or workload submitted to Azure ML.Examples:- command job, scaled job
+Jobs:- A job represents execution or workload submitted to Azure ML.Examples:- command job, sweep
+ job
 Comparing various jobs:-
 | Feature              | Command      | Sweep                       | Parallel                        | Pipeline                    |
 | -------------------- | ------------ | --------------------------- | ------------------------------- | --------------------------- |
 | Main purpose         | Execute code | Tune hyperparameters        | Process tasks/data concurrently | Orchestrate workflow        |
-| Runs code?           | ✅            | ✅                           | ✅                               | Through child jobs          |
+| Runs code?           | ✅           | ✅                         | ✅                              | Through child jobs          |
 | Multiple executions? | Usually 1    | Many trials                 | Many parallel tasks             | Multiple steps              |
 | Main variation       | None         | Hyperparameters             | Data/task partitions            | Workflow dependencies       |
 | Best example         | Train model  | Find best learning rate     | Batch inference                 | Train → evaluate → register |
-| Optimization         | ❌            | ✅                           | ❌                               | ❌                           |
-| DAG/workflow         | ❌            | ❌                           | ❌                               | ✅                           |
+| Optimization         | ❌           | ✅                         | ❌                             | ❌                           |
+| DAG/workflow         | ❌           | ❌                         | ❌                             | ✅                           |
 | Parallelism          | Possible     | Trials can run concurrently | Core purpose                    | Steps can have dependencies |
 
 

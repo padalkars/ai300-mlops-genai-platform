@@ -1,3 +1,7 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
 \Every Day Target Plan
 \Q&A
 \docs\Notes
