@@ -72,13 +72,13 @@ class Modeling:
         trained_model, train_results, test_results = self.training(features=features)
         
         # Model Evaluation
-        eval_obj = Evaluate()
-        train_metrics = eval_obj.get_metrics(actuals=train_results["Actuals"], 
-                                             predicted=train_results["Predicted"],
-                                             data_set="Train") 
-        test_metrics = eval_obj.get_metrics(actuals=test_results["Actuals"],
-                                            predicted=test_results["Predicted"],
-                                            data_set="Test")
+        eval_obj_train = Evaluate(X=self.X_train, actuals=train_results["Actuals"], predicted=train_results["Predicted"],
+                                  data_set_name="Train Data")
+        train_metrics = eval_obj_train.driver(trained_model=trained_model) 
+
+        eval_obj_test = Evaluate(X=self.X_test, actuals=test_results["Actuals"], predicted=test_results["Predicted"], 
+                                data_set_name="Test Data")
+        test_metrics = eval_obj_test.driver(trained_model=trained_model)
 
         train_metrics, test_metrics = list(map(pd.DataFrame, [train_metrics,
                                                               test_metrics]))
@@ -87,7 +87,7 @@ class Modeling:
 
         # Save the results
         if(save_results):
-            result_path = Path(__file__).parent.parent.parent / "data/Results"
+            result_path = Path(__file__).parent.parent.parent / "data" / "Results"
             self.save_results(entity=trained_model, folder_path=result_path, is_model=True)
             self.save_results(entity=train_results, folder_path=result_path, file_name="training_data_results")
             self.save_results(entity=test_results, folder_path=result_path, file_name="test_data_results")

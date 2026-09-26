@@ -1,4 +1,3 @@
-
 from evaluate import Evaluate
 import pandas as pd
 from modelling import Modeling
@@ -22,11 +21,11 @@ class CrossValidation:
     def training(self, X_train, y_train, X_test, y_test, features):
         """
         Input:
-        X_train:-
-        y_train:-
+        X_train:- 
+        y_train:- The actual target values for the train data set
         X_test :-
-        y_test:-
-        features:-
+        y_test:- The actual target values for the test data set
+        features:- The independent features(/variables)
 
         Return:
         results:- A dataframe comprising of evaluation metrics for the train and test set
@@ -46,12 +45,10 @@ class CrossValidation:
         fold_data_list:- A list containing train and test set tuple for each fold
         """
         stratified_split_instance = SKF(n_splits=n_folds, shuffle=True, random_state=24)
-        # print(help(stratified_split_instance.split))
+
         train_test_split = stratified_split_instance.split(X=self.train_data[self.independent_vars], 
                                                                   y=self.train_data[self.target_var])
         fold_data_list = []
-        
-        # print(train_test_split)
 
         for split in train_test_split:
             train_indices, test_indices = split

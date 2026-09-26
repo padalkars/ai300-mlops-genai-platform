@@ -6,7 +6,7 @@ from splitting import Splitting
 from EDA.get_stats import Statistics
 from modelling import Modeling
 from cross_validation import CrossValidation as CV
-
+from evaluate import Evaluate
 
 data_csv_path = Path(__file__).parent.parent.parent / "data"
 
@@ -54,10 +54,10 @@ for fold_num,data_tup in enumerate(stratified_folds):
     results["Folds"] = fold_num+1
     CV_results = pd.concat([CV_results, results], axis=0)
 
-print(CV_results)
 
 # Modelling
 modelling_instance = Modeling(X_train, y_train, X_test, y_test, lr, model_name="Logistic_Regression")
 trained_model, train_test_results = modelling_instance.driver(features=continuous_vars)
+
 
 print(train_test_results)
